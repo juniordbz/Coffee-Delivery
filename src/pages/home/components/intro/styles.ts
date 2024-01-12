@@ -1,63 +1,56 @@
 import styled from 'styled-components'
 import BackgroundIntro from '../../../../assets/BackgroundIntro.png'
+import { TitleText } from '../../../../components/typography'
 
 export const IntroContainer = styled.section`
   width: 100%;
   height: 34rem;
   background-image: url(${BackgroundIntro});
   background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  @media screen and (max-width: 991px) {
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+  }
 `
 export const IntroContent = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-`
+  gap: 3.5rem;
 
-export const HeadLine = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-
-  > h1 {
-    color: ${({ theme }) => theme.colors['base-title']};
-    font-size: ${({ theme }) => theme.textSizes['title-xl']};
-    font-family: ${({ theme }) => theme.fonts.title};
-    line-height: 1.3;
-  }
-  > p {
-    color: ${({ theme }) => theme.colors['base-subtitle']};
-    font-size: ${({ theme }) => theme.textSizes['text-regular-l']};
-    line-height: 1.3;
-  }
-`
-
-export const DestaquesIntro = styled.div`
-  display: flex;
-  gap: 2.5rem;
-
-  > :nth-child(1),
-  > :nth-child(2) {
-    display: flex;
+  @media screen and (max-width: 991px) {
     flex-direction: column;
-    gap: 1.25rem;
+    justify-content: center;
+    > div > img {
+      width: 70%;
+      height: 70%;
+      min-width: 50%;
+      min-height: 50%;
+    }
   }
 `
 
-interface PropsBackground {
-  variant: 'yellow' | 'purple'
-}
+export const IntroTite = styled(TitleText)`
+  margin-bottom: 1rem;
 
-export const BackgroundDestasquesIntro = styled.div<PropsBackground>`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 8px;
-  border-radius: 999px;
-  background: ${({ theme, variant }) => theme.colors[`brand-${variant}-dark`]};
-  color: ${({ theme }) => theme.colors['base-button']};
+  @media screen and (max-width: 991px) {
+    font-size: ${({ theme }) => theme.textSizes['title-m']};
+  }
 `
-export const IconsAndTexts = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
+
+export const HighlightsContainer = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-row-gap: 1.25rem;
+  width: 100%;
+  margin-top: 4rem;
+
+  @media screen and (max-width: 991px) {
+    grid-template-columns: 1fr;
+  }
 `
