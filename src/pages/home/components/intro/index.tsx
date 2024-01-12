@@ -10,16 +10,20 @@ import {
 import { RegularText } from '../../../../components/typography'
 import { InfoWithIcon } from '../../../../components/infoWithIcon'
 import { useTheme } from 'styled-components'
+import { mediaQuery } from '../../../../layout/defaultLayout/styles'
 
 export function IntroHome() {
   const { colors } = useTheme()
+
   return (
     <IntroContainer>
-      <IntroContent className="container">
+      <IntroContent
+        className={mediaQuery > 991 ? 'container' : 'containerMobile'}
+      >
         <div>
           <section>
             <IntroTite size={'xl'}>
-              <h1>Encontre o café perfeito para qualquer hora do dia</h1>
+              Encontre o café perfeito para qualquer hora do dia
             </IntroTite>
             <RegularText size={'l'} color={'subtitle'} as="h3">
               Com o Coffee Delivery você recebe seu café onde estiver, a

@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 import BackgroundIntro from '../../../../assets/BackgroundIntro.png'
 import { TitleText } from '../../../../components/typography'
+import { breakpoints } from '../../../../breakpoints/breakepoints'
 
 export const IntroContainer = styled.section`
   width: 100%;
@@ -10,11 +11,9 @@ export const IntroContainer = styled.section`
   display: flex;
   align-items: center;
   justify-content: center;
-
-  @media screen and (max-width: 991px) {
-    flex-direction: column;
-    justify-content: center;
-    height: 100%;
+  @media ${breakpoints.md} {
+    flex-wrap: wrap;
+    background-image: none;
   }
 `
 export const IntroContent = styled.div`
@@ -23,23 +22,27 @@ export const IntroContent = styled.div`
   justify-content: space-between;
   gap: 3.5rem;
 
-  @media screen and (max-width: 991px) {
+  @media ${breakpoints.md} {
     flex-direction: column;
+    align-items: flex-start;
     justify-content: center;
+    width: 100%;
+    padding: 1rem;
+
     > div > img {
       width: 70%;
       height: 70%;
-      min-width: 50%;
-      min-height: 50%;
+    }
+    > div {
+      display: flex;
+      justify-content: center;
     }
   }
 `
 
 export const IntroTite = styled(TitleText)`
   margin-bottom: 1rem;
-
-  @media screen and (max-width: 991px) {
-    font-size: ${({ theme }) => theme.textSizes['title-m']};
+  @media ${breakpoints.md} {
   }
 `
 
@@ -50,7 +53,7 @@ export const HighlightsContainer = styled.div`
   width: 100%;
   margin-top: 4rem;
 
-  @media screen and (max-width: 991px) {
+  @media ${breakpoints.md} {
     grid-template-columns: 1fr;
   }
 `
