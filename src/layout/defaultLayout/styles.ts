@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import styled from 'styled-components'
 
 export const LayoutContainer = styled.div`
@@ -15,4 +16,3 @@ export const LayoutContainer = styled.div`
     margin-right: 2rem;
   }
 `
-export const mediaQuery = screen.width

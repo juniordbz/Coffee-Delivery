@@ -10,16 +10,13 @@ import {
 import { RegularText } from '../../../../components/typography'
 import { InfoWithIcon } from '../../../../components/infoWithIcon'
 import { useTheme } from 'styled-components'
-import { mediaQuery } from '../../../../layout/defaultLayout/styles'
 
 export function IntroHome() {
   const { colors } = useTheme()
 
   return (
     <IntroContainer>
-      <IntroContent
-        className={mediaQuery > 991 ? 'container' : 'containerMobile'}
-      >
+      <IntroContent className="container">
         <div>
           <section>
             <IntroTite size={'xl'}>

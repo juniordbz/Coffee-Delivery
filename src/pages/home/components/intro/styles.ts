@@ -42,8 +42,6 @@ export const IntroContent = styled.div`
 
 export const IntroTite = styled(TitleText)`
   margin-bottom: 1rem;
-  @media ${breakpoints.md} {
-  }
 `
 
 export const HighlightsContainer = styled.div`
@@ -54,6 +52,10 @@ export const HighlightsContainer = styled.div`
   margin-top: 4rem;
 
   @media ${breakpoints.md} {
+    place-content: center;
+  }
+
+  @media ${breakpoints.sm} {
     grid-template-columns: 1fr;
   }
 `

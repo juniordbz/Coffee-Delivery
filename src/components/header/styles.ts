@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components'
+import { breakpoints } from '../../breakpoints/breakepoints'
 
 export const HeaderContainer = styled.header`
   width: 100%;
@@ -12,6 +13,10 @@ export const HeaderContainer = styled.header`
     align-items: center;
     justify-content: space-between;
     padding: 2rem 0;
+
+    @media ${breakpoints.md} {
+      padding: 2rem 1rem;
+    }
   }
 `
 export const CartAndLocation = styled.div`
