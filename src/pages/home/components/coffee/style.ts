@@ -3,7 +3,7 @@ import { TitleText } from '../../../../components/typography'
 import { breakpoints } from '../../../../breakpoints/breakepoints'
 
 export const Titte = styled(TitleText)`
-  margin: 3rem 0;
+  margin: 2rem 0 4rem;
 `
 export const CoffeeContainer = styled.div`
   display: grid;
@@ -21,6 +21,7 @@ export const CoffeeContainer = styled.div`
   }
   @media ${breakpoints.sm} {
     grid-template-columns: 1fr;
+    grid-row-gap: 3rem;
   }
 `
 export const CoffeeCard = styled.div`

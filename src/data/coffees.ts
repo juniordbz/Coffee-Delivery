@@ -1,5 +1,3 @@
-// prettier-ignore
-
 export const coffees = [
   {
     id: 1,
@@ -7,7 +5,7 @@ export const coffees = [
     name: 'Expresso Tradicional',
     description: 'O tradicional café feito com água quente e grãos moídos',
     photo: 'Tradicional.png',
-    price: 10.20, 
+    price: 10.2,
   },
   {
     id: 2,
@@ -15,7 +13,7 @@ export const coffees = [
     name: 'Expresso Americano',
     description: 'Expresso diluído, menos intenso que o tradicional',
     photo: 'Americano.png',
-    price: 9.90,
+    price: 9.9,
   },
   {
     id: 3,

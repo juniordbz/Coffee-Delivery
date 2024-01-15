@@ -14,6 +14,7 @@ export const IntroContainer = styled.section`
   @media ${breakpoints.md} {
     flex-wrap: wrap;
     background-image: none;
+    height: auto;
   }
 `
 export const IntroContent = styled.div`
@@ -49,10 +50,11 @@ export const HighlightsContainer = styled.div`
   grid-template-columns: 1fr 1fr;
   grid-row-gap: 1.25rem;
   width: 100%;
-  margin-top: 4rem;
+  margin: 4rem 0 6.75rem;
 
   @media ${breakpoints.md} {
     place-content: center;
+    margin: 1rem 0 1rem;
   }
 
   @media ${breakpoints.sm} {

@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { breakpoints } from '../../breakpoints/breakepoints'
 
 export const LayoutContainer = styled.div`
   .container {
@@ -8,10 +9,10 @@ export const LayoutContainer = styled.div`
     padding-left: 10rem; */
     margin-left: auto;
     margin-right: auto;
-  }
-  .containerMobile {
-    width: 100%;
-    margin-left: 2rem;
-    margin-right: 2rem;
+
+    @media ${breakpoints.lg}, ${breakpoints.md} {
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
   }
 `

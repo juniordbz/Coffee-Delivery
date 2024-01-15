@@ -23,11 +23,6 @@ export interface Coffee {
 }
 
 export function CoffeeHome() {
-  function formattedPrice(price: number) {
-    formatMoney(price)
-    return price
-  }
-
   return (
     <div className="container">
       <Titte color={'subtitle'} size={'l'}>
@@ -57,7 +52,7 @@ export function CoffeeHome() {
                   weight={'800'}
                   as="strong"
                 >
-                  {formattedPrice(coffee.price)}
+                  {formatMoney(coffee.price)}
                 </TitleText>
               </Price>
 
