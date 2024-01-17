@@ -31,16 +31,18 @@ export function CheckoutPage() {
         <FormContainer>
           <InputForm className="cep" placeholder="CEP" />
           <InputForm className="rua" placeholder="Rua" />
-          <InputForm className="numero" placeholder="Número" />
-          <InputForm className="complemento" placeholder="Complemento" />
-          <OptionInput>
+          <InputForm className="numero" placeholder="Nº" />
+          <OptionInput className="complemento">
+            <InputForm placeholder="Complemento" />
             <i>Opicional</i>
           </OptionInput>
+
           <InputForm className="bairro" placeholder="Bairro" />
           <InputForm className="cidade" placeholder="Cidade" />
           <InputForm className="uf" placeholder="UF" />
         </FormContainer>
       </CheckoutBackground>
+
       <CheckoutBackground>
         <IconTextCheckout
           icon={<CurrencyDollar color={colors['brand-purple']} size={22} />}

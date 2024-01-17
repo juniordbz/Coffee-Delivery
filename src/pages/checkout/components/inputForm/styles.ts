@@ -25,13 +25,15 @@ export const InputFormContainer = styled.input`
 `
 
 export const OptionInput = styled.div`
-  position: absolute;
-  top: 8.05rem;
-  left: 30rem;
+  position: relative;
   display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  color: ${({ theme }) => theme.colors['base-text']};
-  font-size: 0.75rem;
-  padding: 0 0.75rem;
+  align-items: center;
+  justify-content: flex-end;
+
+  > i {
+    position: absolute;
+    color: ${({ theme }) => theme.colors['base-text']};
+    font-size: 0.75rem;
+    padding: 0 0.75rem;
+  }
 `

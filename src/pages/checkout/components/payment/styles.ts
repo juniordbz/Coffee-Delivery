@@ -1,9 +1,15 @@
 import styled from 'styled-components'
+import { breakpoints } from '../../../../breakpoints/breakepoints'
 
 export const PaymentContainer = styled.div`
   display: flex;
   align-items: space-between;
   gap: 0.75rem;
+
+  @media ${breakpoints.md} {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
 `
 
 export const PaymentCard = styled.button`
