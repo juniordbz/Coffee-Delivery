@@ -13,6 +13,7 @@ import {
   Money,
 } from 'phosphor-react'
 import { OptionInput } from './components/inputForm/styles'
+import { ufs } from '../../data/uf'
 
 export function CheckoutPage() {
   const { colors } = useTheme()
@@ -36,10 +37,19 @@ export function CheckoutPage() {
             <InputForm placeholder="Complemento" />
             <i>Opicional</i>
           </OptionInput>
-
           <InputForm className="bairro" placeholder="Bairro" />
           <InputForm className="cidade" placeholder="Cidade" />
-          <InputForm className="uf" placeholder="UF" />
+          <datalist id="ufs">
+            {ufs.map((uf) => (
+              <option key={uf} value={uf}></option>
+            ))}
+          </datalist>
+          <InputForm
+            id="ufsInputs"
+            list="ufs"
+            className="uf"
+            placeholder="UF"
+          />
         </FormContainer>
       </CheckoutBackground>
 

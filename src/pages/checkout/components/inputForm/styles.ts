@@ -22,6 +22,12 @@ export const InputFormContainer = styled.input`
   &::placeholder {
     color: ${({ theme }) => theme.colors['base-label']};
   }
+
+  /* recomção do dropdawn do input devido as sugestões */
+
+  &::-webkit-calendar-picker-indicator {
+    display: none !important;
+  }
 `
 
 export const OptionInput = styled.div`
