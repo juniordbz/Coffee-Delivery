@@ -9,7 +9,6 @@ export const CoffeeContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-row-gap: 2.5rem;
-  padding-bottom: 10rem;
 
   @media ${breakpoints.lg} {
     grid-template-columns: repeat(3, 1fr);

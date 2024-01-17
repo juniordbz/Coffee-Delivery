@@ -6,6 +6,7 @@ export const HeaderContainer = styled.header`
   background: ${({ theme }) => theme.colors['base-background']};
   position: sticky;
   top: 0;
+  left: 0;
   z-index: 5;
 
   > section {

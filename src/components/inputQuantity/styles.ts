@@ -19,6 +19,10 @@ export const ShopCart = styled.button.attrs({ type: 'button' })`
   svg {
     color: ${({ theme }) => theme.colors['base-white']};
   }
+  &:hover {
+    transition: 0.2s;
+    background: ${({ theme }) => theme.colors['brand-purple']};
+  }
 `
 
 export const ChangeNumber = styled.div`
@@ -34,6 +38,11 @@ export const ChangeNumber = styled.div`
     border: none;
     color: ${({ theme }) => theme.colors['brand-purple']};
     background: transparent;
+  }
+
+  button:hover {
+    transition: 0.2s;
+    color: ${({ theme }) => theme.colors['brand-purple-dark']};
   }
 
   input::-webkit-outer-spin-button,
