@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { breakpoints } from '../../../../breakpoints/breakepoints'
 
 export const SelectedCoffeeContainer = styled.div`
   display: flex;
@@ -22,6 +23,7 @@ export const SelectedCoffeeCard = styled.div`
 export const SelectedCoffeeCart = styled.div`
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
 
   > img {
     width: 4rem;
@@ -30,6 +32,25 @@ export const SelectedCoffeeCart = styled.div`
 
   padding-bottom: 1.5rem;
   border-bottom: 1px solid ${({ theme }) => theme.colors['base-button']};
+
+  @media ${breakpoints.md} {
+    gap: 1rem;
+  }
+
+  @media ${breakpoints.sm} {
+    gap: 1rem;
+    justify-content: flex-start;
+    max-width: 262px;
+
+    > p {
+      width: 100%;
+      display: flex;
+      justify-content: flex-end;
+    }
+  }
+  @media ${breakpoints.xs} {
+    justify-content: flex-end;
+  }
 `
 export const CoffeeAddRemove = styled.div`
   display: flex;
@@ -40,6 +61,14 @@ export const CoffeeAddRemove = styled.div`
   > div {
     display: flex;
     gap: 0.5rem;
+
+    @media ${breakpoints.xs} {
+      justify-content: flex-end;
+    }
+  }
+
+  @media ${breakpoints.md}, ${breakpoints.sm} {
+    padding: 0;
   }
 `
 
@@ -56,4 +85,39 @@ export const RemoveButton = styled.button`
   padding: 0.4rem 0.56rem;
   line-height: 1;
   font-size: ${({ theme }) => theme.textSizes['text-regular-s']};
+  @media ${breakpoints.xs} {
+    > p {
+      display: none;
+    }
+  }
+`
+
+export const TotalValue = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  width: 100%;
+
+  div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+`
+
+export const ConfirmOrder = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 6px;
+  color: ${({ theme }) => theme.colors['base-white']};
+  background: ${({ theme }) => theme.colors['brand-yellow']};
+  text-transform: uppercase;
+  width: 100%;
+  height: 2.875rem;
+
+  &:hover {
+    background: ${({ theme }) => theme.colors['brand-yellow-dark']};
+  }
 `

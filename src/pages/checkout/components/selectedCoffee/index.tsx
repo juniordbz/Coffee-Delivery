@@ -8,6 +8,8 @@ import {
   SelectedCoffeeContainer,
   CoffeeAddRemove,
   RemoveButton,
+  TotalValue,
+  ConfirmOrder,
 } from './styles'
 import { useTheme } from 'styled-components'
 
@@ -30,7 +32,7 @@ export function SelectedCoffee() {
               <InputQuantity size="small" />
               <RemoveButton>
                 <Trash size={16} color={colors['brand-purple']} />
-                remover
+                <p>remover</p>
               </RemoveButton>
             </div>
           </CoffeeAddRemove>
@@ -39,7 +41,7 @@ export function SelectedCoffee() {
           </RegularText>
         </SelectedCoffeeCart>
         <SelectedCoffeeCart>
-          <img src="public\coffees\Leite.png" alt="" />
+          <img src="public\coffees\Americano.png" alt="" />
           <CoffeeAddRemove>
             <RegularText size="m" color="subtitle">
               Expresso Tradicional
@@ -48,7 +50,7 @@ export function SelectedCoffee() {
               <InputQuantity size="small" />
               <RemoveButton>
                 <Trash size={16} color={colors['brand-purple']} />
-                remover
+                <p>remover</p>
               </RemoveButton>
             </div>
           </CoffeeAddRemove>
@@ -56,6 +58,26 @@ export function SelectedCoffee() {
             R$9,90
           </RegularText>
         </SelectedCoffeeCart>
+
+        <TotalValue>
+          <div>
+            <RegularText size="s">Total de itens</RegularText>
+            <RegularText size="m">R$ 27,90</RegularText>
+          </div>
+          <div>
+            <RegularText size="s">Entrega</RegularText>
+            <RegularText size="m">R$ 3,50</RegularText>
+          </div>
+          <div>
+            <RegularText size="l" weight={700}>
+              Total
+            </RegularText>
+            <RegularText size="l" weight={700} color="subtitle">
+              R$ 33,20
+            </RegularText>
+          </div>
+        </TotalValue>
+        <ConfirmOrder>confirmar pedido</ConfirmOrder>
       </SelectedCoffeeCard>
     </SelectedCoffeeContainer>
   )
