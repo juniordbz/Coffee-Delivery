@@ -1,4 +1,4 @@
-import { Coffee } from 'phosphor-react'
+import { Coffee, ShoppingCart } from 'phosphor-react'
 import { InputQuantity } from '../../../../components/inputQuantity'
 import { RegularText, TitleText } from '../../../../components/typography'
 import { coffees } from '../../../../data/coffees'
@@ -7,6 +7,7 @@ import {
   CoffeeContainer,
   Footer,
   Price,
+  ShopCart,
   TagCoffee,
   TitleCard,
   Titte,
@@ -56,7 +57,12 @@ export function CoffeeHome() {
                 </TitleText>
               </Price>
 
-              <InputQuantity />
+              <div>
+                <InputQuantity />
+                <ShopCart>
+                  <ShoppingCart weight="fill" size={20} />
+                </ShopCart>
+              </div>
             </Footer>
           </CoffeeCard>
         ))}

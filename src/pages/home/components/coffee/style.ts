@@ -69,8 +69,33 @@ export const Footer = styled.div`
   align-items: center;
   justify-content: space-between;
   margin-top: 33px;
+
+  > div {
+    width: 118px;
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+  }
 `
 export const Price = styled.div`
   display: flex;
   align-items: baseline;
+`
+export const ShopCart = styled.button.attrs({ type: 'button' })`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  padding: 0.5rem;
+  background: ${({ theme }) => theme.colors['brand-purple-dark']};
+  border-radius: 8px;
+  border: none;
+  svg {
+    color: ${({ theme }) => theme.colors['base-white']};
+  }
+  &:hover {
+    transition: 0.2s;
+    background: ${({ theme }) => theme.colors['brand-purple']};
+  }
 `

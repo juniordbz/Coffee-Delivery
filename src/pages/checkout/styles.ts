@@ -3,12 +3,18 @@ import { breakpoints } from '../../breakpoints/breakepoints'
 
 export const CheckoutContainer = styled.div`
   display: flex;
-  flex-direction: column;
   flex-wrap: wrap;
-  width: 100%;
   height: auto;
-  gap: 1rem;
+  width: 100%;
+  gap: 2rem;
   padding-bottom: 5rem;
+
+  > div {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    gap: 1rem;
+  }
 `
 
 export const CheckoutBackground = styled.div`

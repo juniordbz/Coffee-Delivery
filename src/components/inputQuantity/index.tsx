@@ -1,10 +1,14 @@
-import { Minus, Plus, ShoppingCart } from 'phosphor-react'
-import { InputContainer, ChangeNumber, ShopCart } from './styles'
+import { Minus, Plus } from 'phosphor-react'
+import { InputContainer, ChangeNumber } from './styles'
 
-export function InputQuantity() {
+interface InputProps {
+  size?: 'medium' | 'small'
+}
+
+export function InputQuantity({ size = 'medium' }: InputProps) {
   return (
     <InputContainer>
-      <ChangeNumber>
+      <ChangeNumber size={size}>
         <button>
           <Minus />
         </button>
@@ -15,9 +19,6 @@ export function InputQuantity() {
           <Plus />
         </button>
       </ChangeNumber>
-      <ShopCart>
-        <ShoppingCart weight="fill" size={20} />
-      </ShopCart>
     </InputContainer>
   )
 }

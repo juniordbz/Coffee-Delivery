@@ -1,43 +1,28 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
+
+interface InputProps {
+  size?: 'medium' | 'small'
+}
 
 export const InputContainer = styled.div`
   display: flex;
   gap: 0.5rem;
-  width: 118px;
-  height: 38px;
-`
-export const ShopCart = styled.button.attrs({ type: 'button' })`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 38px;
-  height: 38px;
-  padding: 0.5rem;
-  background: ${({ theme }) => theme.colors['brand-purple-dark']};
-  border-radius: 8px;
-  border: none;
-  svg {
-    color: ${({ theme }) => theme.colors['base-white']};
-  }
-  &:hover {
-    transition: 0.2s;
-    background: ${({ theme }) => theme.colors['brand-purple']};
-  }
+  height: 100%;
 `
 
-export const ChangeNumber = styled.div`
+export const ChangeNumber = styled.div<InputProps>`
   display: flex;
   width: 72px;
-  height: 38px;
+  height: 100%;
   border: none;
-  border-radius: 8px;
-  padding: 12px 8px;
+  border-radius: 6px;
   background: ${({ theme }) => theme.colors['base-button']};
 
   button {
     border: none;
     color: ${({ theme }) => theme.colors['brand-purple']};
     background: transparent;
+    line-height: 0;
   }
 
   button:hover {
@@ -57,6 +42,16 @@ export const ChangeNumber = styled.div`
     border: none;
     background: transparent;
     text-align: center;
-    line-height: 1rem;
   }
+
+  ${({ size }) =>
+    size === 'medium' &&
+    css`
+      padding: 0.56rem;
+    `}
+  ${({ size }) =>
+    size === 'small' &&
+    css`
+      padding: 0.4rem 0.56rem;
+    `}
 `
