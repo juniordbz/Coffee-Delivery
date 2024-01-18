@@ -34,6 +34,27 @@ export function SelectedCoffee() {
               </RemoveButton>
             </div>
           </CoffeeAddRemove>
+          <RegularText size="m" weight={700} color="text">
+            R$9,90
+          </RegularText>
+        </SelectedCoffeeCart>
+        <SelectedCoffeeCart>
+          <img src="public\coffees\Leite.png" alt="" />
+          <CoffeeAddRemove>
+            <RegularText size="m" color="subtitle">
+              Expresso Tradicional
+            </RegularText>
+            <div>
+              <InputQuantity size="small" />
+              <RemoveButton>
+                <Trash size={16} color={colors['brand-purple']} />
+                remover
+              </RemoveButton>
+            </div>
+          </CoffeeAddRemove>
+          <RegularText size="m" weight={700} color="text">
+            R$9,90
+          </RegularText>
         </SelectedCoffeeCart>
       </SelectedCoffeeCard>
     </SelectedCoffeeContainer>

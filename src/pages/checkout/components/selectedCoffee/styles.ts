@@ -10,7 +10,8 @@ export const SelectedCoffeeCard = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 3rem;
+  flex-direction: column;
+  gap: 1.5rem;
   height: auto;
   width: 100%;
   max-width: 448px;
@@ -26,12 +27,15 @@ export const SelectedCoffeeCart = styled.div`
     width: 4rem;
     height: 4rem;
   }
+
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid ${({ theme }) => theme.colors['base-button']};
 `
 export const CoffeeAddRemove = styled.div`
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-  padding-left: 1.25rem;
+  padding: 0 3.125rem 0 1.25rem;
 
   > div {
     display: flex;
