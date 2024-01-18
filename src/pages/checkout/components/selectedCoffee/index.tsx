@@ -12,6 +12,7 @@ import {
   ConfirmOrder,
 } from './styles'
 import { useTheme } from 'styled-components'
+import { NavLink } from 'react-router-dom'
 
 export function SelectedCoffee() {
   const { colors } = useTheme()
@@ -77,7 +78,10 @@ export function SelectedCoffee() {
             </RegularText>
           </div>
         </TotalValue>
-        <ConfirmOrder>confirmar pedido</ConfirmOrder>
+
+        <NavLink to={'/success'}>
+          <ConfirmOrder>confirmar pedido</ConfirmOrder>
+        </NavLink>
       </SelectedCoffeeCard>
     </SelectedCoffeeContainer>
   )

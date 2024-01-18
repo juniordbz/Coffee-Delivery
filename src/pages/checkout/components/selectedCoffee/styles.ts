@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import { breakpoints } from '../../../../breakpoints/breakepoints'
+import { ButtonHTMLAttributes } from 'react'
 
 export const SelectedCoffeeContainer = styled.div`
   display: flex;
@@ -19,6 +20,10 @@ export const SelectedCoffeeCard = styled.div`
   background: ${({ theme }) => theme.colors['base-card']};
   border-radius: 0 32px 0 32px;
   padding: 2.5rem;
+
+  > NavLink {
+    width: 100%;
+  }
 `
 export const SelectedCoffeeCart = styled.div`
   display: flex;
@@ -105,7 +110,9 @@ export const TotalValue = styled.div`
   }
 `
 
-export const ConfirmOrder = styled.button`
+type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement>
+
+export const ConfirmOrder = styled.button<ButtonProps>`
   display: flex;
   align-items: center;
   justify-content: center;

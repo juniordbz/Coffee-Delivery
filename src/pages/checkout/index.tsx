@@ -78,7 +78,7 @@ export function CheckoutPage() {
           </PaymentContainer>
         </CheckoutBackground>
       </div>
-      <SelectedCoffee></SelectedCoffee>
+      <SelectedCoffee />
     </CheckoutContainer>
   )
 }
