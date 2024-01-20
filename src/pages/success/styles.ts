@@ -1,9 +1,11 @@
 import styled from 'styled-components'
+import { breakpoints } from '../../breakpoints/breakepoints'
 
 export const SucessContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
+  flex-wrap: wrap;
   padding: 5rem 0;
 
   > div {
@@ -14,6 +16,13 @@ export const SucessContainer = styled.div`
 
   h1 {
     color: ${({ theme }) => theme.colors['brand-yellow-dark']};
+  }
+  img {
+    height: 100%;
+    width: 100%;
+  }
+  @media ${breakpoints.md} {
+    gap: 5rem;
   }
 `
 
