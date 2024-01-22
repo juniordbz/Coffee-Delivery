@@ -13,6 +13,8 @@ import {
   Titte,
 } from './style'
 import { formatMoney } from '../../../../utils/formatMoney'
+import { CartItem } from '../../../../contexts/cartContext'
+import { UseCart } from '../../../../hooks/useCart'
 
 export interface Coffee {
   id: number
@@ -23,7 +25,17 @@ export interface Coffee {
   price: number
 }
 
-export function CoffeeHome() {
+export function CoffeeHome({ quantity }: CartItem) {
+  const { addCoffeeToCart } = UseCart()
+
+  function handleAddToCart() {
+    const coffeeToAdd = {
+      ...coffees,
+      quantity,
+    }
+    addCoffeeToCart(coffeeToAdd)
+  }
+
   return (
     <div className="container">
       <Titte color={'subtitle'} size={'l'}>
@@ -59,7 +71,7 @@ export function CoffeeHome() {
 
               <div>
                 <InputQuantity />
-                <ShopCart>
+                <ShopCart onClick={handleAddToCart}>
                   <ShoppingCart weight="fill" size={20} />
                 </ShopCart>
               </div>
