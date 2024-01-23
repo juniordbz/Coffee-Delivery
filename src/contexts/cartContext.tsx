@@ -34,10 +34,16 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
     })
     setCartItems(newCart)
   }
-  console.log(setCartItems)
+
+  console.log(cartItems)
 
   return (
-    <CartContext.Provider value={{ cartItems, addCoffeeToCart }}>
+    <CartContext.Provider
+      value={{
+        cartItems,
+        addCoffeeToCart,
+      }}
+    >
       {children}
     </CartContext.Provider>
   )

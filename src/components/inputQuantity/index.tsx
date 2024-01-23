@@ -2,15 +2,17 @@ import { Minus, Plus } from 'phosphor-react'
 import { InputContainer, ChangeNumber } from './styles'
 import { useState } from 'react'
 
-interface InputProps {
+export interface InputProps {
   size?: 'medium' | 'small'
+  onAddItem: () => void
 }
 
-export function InputQuantity({ size = 'medium' }: InputProps) {
+export function InputQuantity({ size = 'medium', onAddItem }: InputProps) {
   const [quantity, setQuantity] = useState(1)
 
   function handleIncrease() {
     setQuantity((state) => state + 1)
+    onAddItem()
   }
 
   function handleDecrease() {

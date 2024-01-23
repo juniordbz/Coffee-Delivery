@@ -13,8 +13,8 @@ import {
   Titte,
 } from './style'
 import { formatMoney } from '../../../../utils/formatMoney'
-import { CartItem } from '../../../../contexts/cartContext'
 import { UseCart } from '../../../../hooks/useCart'
+import { useState } from 'react'
 
 export interface Coffee {
   id: number
@@ -25,15 +25,25 @@ export interface Coffee {
   price: number
 }
 
-export function CoffeeHome({ quantity }: CartItem) {
+export function CoffeeHome() {
+  const [coffeesList, SetCoffeesList] = useState(
+    coffees.map((coffee) => ({ ...coffee, quantity: 1 })),
+  )
   const { addCoffeeToCart } = UseCart()
 
-  function handleAddToCart() {
-    const coffeeToAdd = {
-      ...coffees,
-      quantity,
-    }
-    addCoffeeToCart(coffeeToAdd)
+  function handleAddCoffee(coffeeId: number) {
+    const findCoffee = coffeesList.find((coffee) => coffee.id === coffeeId)
+    if (!findCoffee?.quantity) return
+    findCoffee?.quantity += 1
+    const updatadeCoffeeList = coffeesList.map((coffee) => {
+      if (coffee.id === findCoffee?.id) {
+        return findCoffee
+      } else {
+        return coffee
+      }
+    })
+
+    SetCoffeesList(updatadeCoffeeList)
   }
 
   return (
@@ -42,7 +52,7 @@ export function CoffeeHome({ quantity }: CartItem) {
         Nossos Cafés
       </Titte>
       <CoffeeContainer>
-        {coffees.map((coffee) => (
+        {coffeesList.map((coffee) => (
           <CoffeeCard key={coffee.id}>
             <img src={`/coffees/${coffee.photo}`} />
             <TagCoffee>
@@ -70,8 +80,8 @@ export function CoffeeHome({ quantity }: CartItem) {
               </Price>
 
               <div>
-                <InputQuantity />
-                <ShopCart onClick={handleAddToCart}>
+                <InputQuantity onAddItem={() => handleAddCoffee(coffee.id)} />
+                <ShopCart onClick={() => addCoffeeToCart(coffee)}>
                   <ShoppingCart weight="fill" size={20} />
                 </ShopCart>
               </div>
