@@ -15,6 +15,7 @@ import {
 import { formatMoney } from '../../../../utils/formatMoney'
 import { UseCart } from '../../../../hooks/useCart'
 import { useState } from 'react'
+import { CartItem } from '../../../../contexts/cartContext'
 
 export interface Coffee {
   id: number
@@ -26,24 +27,46 @@ export interface Coffee {
 }
 
 export function CoffeeHome() {
-  const [coffeesList, SetCoffeesList] = useState(
+  const [coffeesList, setCoffeesList] = useState(
     coffees.map((coffee) => ({ ...coffee, quantity: 1 })),
   )
   const { addCoffeeToCart } = UseCart()
 
-  function handleAddCoffee(coffeeId: number) {
-    const findCoffee = coffeesList.find((coffee) => coffee.id === coffeeId)
-    if (!findCoffee?.quantity) return
-    findCoffee?.quantity += 1
-    const updatadeCoffeeList = coffeesList.map((coffee) => {
-      if (coffee.id === findCoffee?.id) {
-        return findCoffee
-      } else {
-        return coffee
-      }
-    })
+  const handleAdd = (coffee: CartItem) => {
+    const copyOfCoffee = { ...coffee }
 
-    SetCoffeesList(updatadeCoffeeList)
+    addCoffeeToCart(copyOfCoffee)
+    resetQuantity(coffee.id)
+  }
+
+  const addQuantity = (coffeeId: number) => {
+    const newCoffees = [...coffeesList]
+
+    newCoffees[
+      newCoffees.findIndex((element) => element.id === coffeeId)
+    ].quantity += 1
+
+    setCoffeesList(newCoffees)
+  }
+
+  const decreaseQuantity = (coffeeId: number) => {
+    const newCoffees = [...coffeesList]
+
+    newCoffees[
+      newCoffees.findIndex((element) => element.id === coffeeId)
+    ].quantity -= 1
+
+    setCoffeesList(newCoffees)
+  }
+
+  const resetQuantity = (coffeeId: number) => {
+    const newCoffees = [...coffeesList]
+
+    newCoffees[
+      newCoffees.findIndex((element) => element.id === coffeeId)
+    ].quantity = 1
+
+    setCoffeesList(newCoffees)
   }
 
   return (
@@ -54,7 +77,7 @@ export function CoffeeHome() {
       <CoffeeContainer>
         {coffeesList.map((coffee) => (
           <CoffeeCard key={coffee.id}>
-            <img src={`/coffees/${coffee.photo}`} />
+            <img src={`/coffees/${coffee.photo}`} alt="foto" />
             <TagCoffee>
               {coffee.tags.map((tag) => (
                 <span key={`${coffee.id}${tag}`}>{tag}</span>
@@ -80,8 +103,12 @@ export function CoffeeHome() {
               </Price>
 
               <div>
-                <InputQuantity onAddItem={() => handleAddCoffee(coffee.id)} />
-                <ShopCart onClick={() => addCoffeeToCart(coffee)}>
+                <InputQuantity
+                  add={() => addQuantity(coffee.id)}
+                  decrease={() => decreaseQuantity(coffee.id)}
+                  quantity={coffee.quantity}
+                />
+                <ShopCart onClick={() => handleAdd(coffee)}>
                   <ShoppingCart weight="fill" size={20} />
                 </ShopCart>
               </div>
