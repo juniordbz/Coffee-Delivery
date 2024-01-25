@@ -16,7 +16,6 @@ export const SelectedCoffeeCard = styled.div`
   gap: 1.5rem;
   height: auto;
   width: 100%;
-  max-width: 448px;
   background: ${({ theme }) => theme.colors['base-card']};
   border-radius: 0 32px 0 32px;
   padding: 2.5rem;

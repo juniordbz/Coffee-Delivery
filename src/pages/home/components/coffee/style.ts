@@ -19,8 +19,10 @@ export const CoffeeContainer = styled.div`
     place-items: center;
   }
   @media ${breakpoints.sm} {
-    grid-template-columns: 1fr;
-    grid-row-gap: 3rem;
+    display: flex;
+    gap: 1rem;
+    flex-wrap: nowrap;
+    overflow-x: auto;
   }
 `
 export const CoffeeCard = styled.div`
@@ -37,6 +39,10 @@ export const CoffeeCard = styled.div`
     width: 120px;
     height: 120px;
     margin-top: -20px;
+  }
+
+  @media ${breakpoints.sm} {
+    margin-top: 2rem;
   }
 `
 export const TagCoffee = styled.div`

@@ -1,4 +1,4 @@
-import { ReactNode, createContext, useEffect, useState } from 'react'
+import { ReactNode, createContext, useState } from 'react'
 import { Coffee } from '../pages/home/components/coffee'
 
 export interface CartItem extends Coffee {
@@ -72,10 +72,6 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
 
     setCartItems(newCartItems)
   }
-
-  useEffect(() => {
-    console.log(cartItems)
-  }, [cartItems])
 
   return (
     <CartContext.Provider
