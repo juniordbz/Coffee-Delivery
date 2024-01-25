@@ -21,7 +21,7 @@ export function Header() {
             <p>Itaquaquecetuba, SP</p>
           </HeaderButton>
           <NavLink to="/checkout">
-            <HeaderButton variant={'yellow'}>
+            <HeaderButton disabled={cartQuantity < 1} variant={'yellow'}>
               {cartQuantity >= 1 && <span>{cartQuantity}</span>}
               <ShoppingCart size={22} weight="fill" />
             </HeaderButton>

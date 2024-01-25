@@ -3,22 +3,36 @@ import { InputQuantity } from '../../../../components/inputQuantity'
 import { RegularText, TitleText } from '../../../../components/typography'
 
 import {
-  SelectedCoffeeCart,
   SelectedCoffeeCard,
   SelectedCoffeeContainer,
   CoffeeAddRemove,
   RemoveButton,
   TotalValue,
   ConfirmOrder,
+  SelectedCoffeeCart,
 } from './styles'
 import { useTheme } from 'styled-components'
 import { NavLink } from 'react-router-dom'
 import { UseCart } from '../../../../hooks/useCart'
 import { formatMoney } from '../../../../utils/formatMoney'
 
+const DELIVERY_PRICE = 3.5
+
 export function SelectedCoffee() {
-  const { cartItems, changeQuantity, deleteCartItem } = UseCart()
+  const {
+    cartItems,
+    changeQuantity,
+    deleteCartItem,
+    cartItemsTotal,
+    cartQuantity,
+  } = UseCart()
   const { colors } = useTheme()
+
+  const cartTotal = DELIVERY_PRICE + cartItemsTotal
+
+  const formattedTotal = formatMoney(cartItemsTotal)
+  const formattedDeliveryPrice = formatMoney(DELIVERY_PRICE)
+  const formattedCartTotal = formatMoney(cartTotal)
 
   return (
     <SelectedCoffeeContainer>
@@ -52,7 +66,7 @@ export function SelectedCoffee() {
               </div>
             </CoffeeAddRemove>
             <RegularText size="m" weight={700} color="text">
-              {formatMoney(coffee.price)}
+              {formatMoney(coffee.price * coffee.quantity)}
             </RegularText>
           </SelectedCoffeeCart>
         ))}
@@ -60,24 +74,26 @@ export function SelectedCoffee() {
         <TotalValue>
           <div>
             <RegularText size="s">Total de itens</RegularText>
-            <RegularText size="m">R$ 27,90</RegularText>
+            <RegularText size="m">{formattedTotal}</RegularText>
           </div>
           <div>
             <RegularText size="s">Entrega</RegularText>
-            <RegularText size="m">R$ 3,50</RegularText>
+            <RegularText size="m">{formattedDeliveryPrice}</RegularText>
           </div>
           <div>
             <RegularText size="l" weight={700}>
               Total
             </RegularText>
             <RegularText size="l" weight={700} color="subtitle">
-              R$ 33,20
+              {formattedCartTotal}
             </RegularText>
           </div>
         </TotalValue>
 
         <NavLink to={'/success'}>
-          <ConfirmOrder>confirmar pedido</ConfirmOrder>
+          <ConfirmOrder disabled={cartQuantity <= 0}>
+            confirmar pedido
+          </ConfirmOrder>
         </NavLink>
       </SelectedCoffeeCard>
     </SelectedCoffeeContainer>

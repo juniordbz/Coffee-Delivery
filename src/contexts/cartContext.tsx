@@ -14,6 +14,7 @@ interface CartContextType {
     operationType: 'increase' | 'decrease',
   ) => void
   cartQuantity: number
+  cartItemsTotal: number
 }
 
 interface CartContextProviderProps {
@@ -24,6 +25,10 @@ export const CartContext = createContext({} as CartContextType)
 
 export function CartContextProvider({ children }: CartContextProviderProps) {
   const [cartItems, setCartItems] = useState<CartItem[]>([])
+
+  const cartItemsTotal = cartItems.reduce((total, cartItem) => {
+    return total + cartItem.price * cartItem.quantity
+  }, 0)
 
   const cartQuantity = cartItems.length
 
@@ -80,6 +85,7 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
         changeQuantity,
         deleteCartItem,
         cartQuantity,
+        cartItemsTotal,
       }}
     >
       {children}

@@ -6,7 +6,7 @@ export interface InputProps {
   onIncrease: () => void
   onDecrease: () => void
   quantity: number
-  onValue: () => void
+  onValue?: () => void
 }
 
 export function InputQuantity({
