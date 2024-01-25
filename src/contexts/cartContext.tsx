@@ -10,6 +10,7 @@ interface CartContextType {
   addCoffeeToCart: (coffee: CartItem) => void
   deleteCartItem: (coffeeId: number) => void
   changeQuantity: (coffeeId: number, operationType: 'add' | 'decrease') => void
+  cartQuantity: number
 }
 
 interface CartContextProviderProps {
@@ -20,6 +21,8 @@ export const CartContext = createContext({} as CartContextType)
 
 export function CartContextProvider({ children }: CartContextProviderProps) {
   const [cartItems, setCartItems] = useState<CartItem[]>([])
+
+  const cartQuantity = cartItems.length
 
   function addCoffeeToCart(coffee: CartItem) {
     const coffeIndex = cartItems.findIndex(
@@ -73,6 +76,7 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
         addCoffeeToCart,
         changeQuantity,
         deleteCartItem,
+        cartQuantity,
       }}
     >
       {children}
