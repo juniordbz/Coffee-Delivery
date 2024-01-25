@@ -13,8 +13,11 @@ import {
 } from './styles'
 import { useTheme } from 'styled-components'
 import { NavLink } from 'react-router-dom'
+import { UseCart } from '../../../../hooks/useCart'
+import { formatMoney } from '../../../../utils/formatMoney'
 
 export function SelectedCoffee() {
+  const { cartItems, changeQuantity, deleteCartItem } = UseCart()
   const { colors } = useTheme()
 
   return (
@@ -23,42 +26,36 @@ export function SelectedCoffee() {
         Cafés Selecionados
       </TitleText>
       <SelectedCoffeeCard>
-        <SelectedCoffeeCart>
-          <img src="public\coffees\Americano.png" alt="" />
-          <CoffeeAddRemove>
-            <RegularText size="m" color="subtitle">
-              Expresso Tradicional
+        {cartItems.map((coffee) => (
+          <SelectedCoffeeCart key={coffee.id}>
+            <img src={`/coffees/${coffee.photo}`} alt="foto" />
+
+            <CoffeeAddRemove>
+              <RegularText size="m" color="subtitle">
+                {coffee.name}
+              </RegularText>
+              <div>
+                <InputQuantity
+                  onDecrease={
+                    coffee.quantity === 1
+                      ? () => deleteCartItem(coffee.id)
+                      : () => changeQuantity(coffee.id, 'decrease')
+                  }
+                  onIncrease={() => changeQuantity(coffee.id, 'increase')}
+                  quantity={coffee.quantity}
+                  size="small"
+                />
+                <RemoveButton onClick={() => deleteCartItem(coffee.id)}>
+                  <Trash size={16} color={colors['brand-purple']} />
+                  <p>remover</p>
+                </RemoveButton>
+              </div>
+            </CoffeeAddRemove>
+            <RegularText size="m" weight={700} color="text">
+              {formatMoney(coffee.price)}
             </RegularText>
-            <div>
-              <InputQuantity size="small" />
-              <RemoveButton>
-                <Trash size={16} color={colors['brand-purple']} />
-                <p>remover</p>
-              </RemoveButton>
-            </div>
-          </CoffeeAddRemove>
-          <RegularText size="m" weight={700} color="text">
-            R$9,90
-          </RegularText>
-        </SelectedCoffeeCart>
-        <SelectedCoffeeCart>
-          <img src="public\coffees\Americano.png" alt="" />
-          <CoffeeAddRemove>
-            <RegularText size="m" color="subtitle">
-              Expresso Tradicional
-            </RegularText>
-            <div>
-              <InputQuantity size="small" />
-              <RemoveButton>
-                <Trash size={16} color={colors['brand-purple']} />
-                <p>remover</p>
-              </RemoveButton>
-            </div>
-          </CoffeeAddRemove>
-          <RegularText size="m" weight={700} color="text">
-            R$9,90
-          </RegularText>
-        </SelectedCoffeeCart>
+          </SelectedCoffeeCart>
+        ))}
 
         <TotalValue>
           <div>

@@ -3,27 +3,29 @@ import { InputContainer, ChangeNumber } from './styles'
 
 export interface InputProps {
   size?: 'medium' | 'small'
-  add: () => void
-  decrease: () => void
+  onIncrease: () => void
+  onDecrease: () => void
   quantity: number
+  onValue: () => void
 }
 
 export function InputQuantity({
   size = 'medium',
-  add,
-  decrease,
+  onIncrease,
+  onDecrease,
   quantity,
+  onValue,
 }: InputProps) {
   return (
     <InputContainer>
       <ChangeNumber size={size}>
-        <button disabled={quantity <= 1} onClick={() => decrease()}>
+        <button disabled={onValue} onClick={() => onDecrease()}>
           <Minus />
         </button>
 
         <input type="number" readOnly value={quantity} />
 
-        <button onClick={() => add()}>
+        <button onClick={() => onIncrease()}>
           <Plus />
         </button>
       </ChangeNumber>

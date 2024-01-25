@@ -9,7 +9,10 @@ interface CartContextType {
   cartItems: CartItem[]
   addCoffeeToCart: (coffee: CartItem) => void
   deleteCartItem: (coffeeId: number) => void
-  changeQuantity: (coffeeId: number, operationType: 'add' | 'decrease') => void
+  changeQuantity: (
+    coffeeId: number,
+    operationType: 'increase' | 'decrease',
+  ) => void
   cartQuantity: number
 }
 
@@ -45,7 +48,7 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
 
     const newCartItems = [...cartItems]
 
-    if (operationType === 'add') {
+    if (operationType === 'increase') {
       newCartItems[coffeIndex].quantity += 1
     } else if (operationType === 'decrease') {
       newCartItems[coffeIndex].quantity -= 1
