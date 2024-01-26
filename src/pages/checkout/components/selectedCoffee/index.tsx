@@ -15,6 +15,7 @@ import { useTheme } from 'styled-components'
 import { NavLink } from 'react-router-dom'
 import { UseCart } from '../../../../hooks/useCart'
 import { formatMoney } from '../../../../utils/formatMoney'
+import { useEffect } from 'react'
 
 const DELIVERY_PRICE = 3.5
 
@@ -33,6 +34,10 @@ export function SelectedCoffee() {
   const formattedTotal = formatMoney(cartItemsTotal)
   const formattedDeliveryPrice = formatMoney(DELIVERY_PRICE)
   const formattedCartTotal = formatMoney(cartTotal)
+
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
 
   return (
     <SelectedCoffeeContainer>
