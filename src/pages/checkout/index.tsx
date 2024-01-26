@@ -1,84 +1,43 @@
-import { TitleText } from '../../components/typography'
-import { IconTextCheckout } from './components/iconTextCheckout'
-import { CheckoutBackground, CheckoutContainer, FormContainer } from './styles'
-import { useTheme } from 'styled-components'
-import { InputForm } from './components/inputForm'
-import { PaymentOptions } from './components/payment'
-import { PaymentContainer } from './components/payment/styles'
-import {
-  Bank,
-  CreditCard,
-  CurrencyDollar,
-  MapPinLine,
-  Money,
-} from 'phosphor-react'
-import { OptionInput } from './components/inputForm/styles'
-import { ufs } from '../../data/uf'
+import { CheckoutContainer } from './styles'
 import { SelectedCoffee } from './components/selectedCoffee'
+import * as zod from 'zod'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { useForm, FormProvider } from 'react-hook-form'
+import { FormCheckout } from './components/form'
+
+const confirmOrderFormValidationShema = zod.object({
+  cep: zod.string().min(1, 'informe o cep'),
+  rua: zod.string().min(1, 'informe a rua'),
+  numero: zod.string().min(1, 'informe o numero'),
+  bairro: zod.string().min(1, 'informe o bairro'),
+  cidade: zod.string().min(1, 'informe a cidade'),
+  uf: zod.string().min(2, 'informe o estado'),
+  complemento: zod.string(),
+})
+
+export type OrderData = zod.infer<typeof confirmOrderFormValidationShema>
+
+type ConfirmOrderFormData = OrderData
 
 export function CheckoutPage() {
-  const { colors } = useTheme()
+  const confirmOrderForm = useForm<ConfirmOrderFormData>({
+    resolver: zodResolver(confirmOrderFormValidationShema),
+  })
+
+  const { handleSubmit } = confirmOrderForm
+
+  function handleConfirmOrder(data: ConfirmOrderFormData) {
+    console.log(data)
+  }
   return (
-    <CheckoutContainer className="container">
-      <div>
-        <TitleText size="xs" color="subtitle">
-          Complete seu pedido
-        </TitleText>
-
-        <CheckoutBackground>
-          <IconTextCheckout
-            icon={<MapPinLine color={colors['brand-yellow-dark']} size={22} />}
-            title="Endereço de Entrega"
-            text="Informe o endereço onde deseja receber seu pedido"
-          />
-          <FormContainer>
-            <InputForm className="cep" placeholder="CEP" />
-            <InputForm className="rua" placeholder="Rua" />
-            <InputForm className="numero" placeholder="Nº" />
-            <OptionInput className="complemento">
-              <InputForm placeholder="Complemento" />
-              <i>Opicional</i>
-            </OptionInput>
-            <InputForm className="bairro" placeholder="Bairro" />
-            <InputForm className="cidade" placeholder="Cidade" />
-            <datalist id="ufs">
-              {ufs.map((uf) => (
-                <option key={uf} value={uf}></option>
-              ))}
-            </datalist>
-            <InputForm
-              id="ufsInputs"
-              list="ufs"
-              className="uf"
-              placeholder="UF"
-            />
-          </FormContainer>
-        </CheckoutBackground>
-
-        <CheckoutBackground>
-          <IconTextCheckout
-            icon={<CurrencyDollar color={colors['brand-purple']} size={22} />}
-            title="Pagamento"
-            text="O pagamento é feito na entrega. Escolha a forma que deseja pagar"
-          />
-
-          <PaymentContainer>
-            <PaymentOptions
-              icon={<CreditCard size={16} color={colors['brand-purple']} />}
-              text="Cartão de crédito"
-            />
-            <PaymentOptions
-              icon={<Bank size={16} color={colors['brand-purple']} />}
-              text="Cartão de Débito"
-            />
-            <PaymentOptions
-              icon={<Money size={16} color={colors['brand-purple']} />}
-              text="Dinheiro"
-            />
-          </PaymentContainer>
-        </CheckoutBackground>
-      </div>
-      <SelectedCoffee />
-    </CheckoutContainer>
+    <FormProvider {...confirmOrderForm}>
+      <CheckoutContainer
+        className="container"
+        onSubmit={handleSubmit(handleConfirmOrder)}
+      >
+        <FormCheckout />
+        <SelectedCoffee />
+      </CheckoutContainer>
+    </FormProvider>
   )
 }

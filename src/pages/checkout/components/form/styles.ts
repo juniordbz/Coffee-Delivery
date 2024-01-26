@@ -1,0 +1,58 @@
+import styled from 'styled-components'
+import { breakpoints } from '../../../../breakpoints/breakepoints'
+
+export const CheckoutBackground = styled.div`
+  width: 100%;
+  max-width: 640px;
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 2.5rem;
+  background: ${({ theme }) => theme.colors['base-card']};
+`
+
+export const FormContainer = styled.div`
+  display: grid;
+  grid-template-columns: 3.75rem repeat(2, minmax(10rem, 2fr)) 3.75rem;
+  grid-row-gap: 1rem;
+  grid-column-gap: 0.75rem;
+  grid-template-areas:
+    'cep cep none none'
+    'rua rua rua rua'
+    'numero complemento complemento complemento'
+    'bairro bairro cidade uf';
+
+  .cep {
+    grid-area: cep;
+  }
+
+  .rua {
+    grid-area: rua;
+  }
+  .numero {
+    grid-area: numero;
+  }
+  .complemento {
+    grid-area: complemento;
+  }
+  .bairro {
+    grid-area: bairro;
+  }
+  .cidade {
+    grid-area: cidade;
+  }
+  .uf {
+    grid-area: uf;
+  }
+
+  @media ${breakpoints.md} {
+    grid-template-columns: minmax(10rem, 1fr) minmax(2.8rem, 3.75rem);
+    grid-template-areas:
+      'cep cep '
+      'rua numero '
+      'complemento complemento'
+      'bairro bairro'
+      'cidade uf';
+  }
+`

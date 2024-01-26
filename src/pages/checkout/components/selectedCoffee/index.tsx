@@ -12,7 +12,6 @@ import {
   SelectedCoffeeCart,
 } from './styles'
 import { useTheme } from 'styled-components'
-import { NavLink } from 'react-router-dom'
 import { UseCart } from '../../../../hooks/useCart'
 import { formatMoney } from '../../../../utils/formatMoney'
 import { useEffect } from 'react'
@@ -95,11 +94,9 @@ export function SelectedCoffee() {
           </div>
         </TotalValue>
 
-        <NavLink to={'/success'}>
-          <ConfirmOrder disabled={cartQuantity <= 0}>
-            confirmar pedido
-          </ConfirmOrder>
-        </NavLink>
+        <ConfirmOrder disabled={cartQuantity <= 0} type="submit">
+          confirmar pedido
+        </ConfirmOrder>
       </SelectedCoffeeCard>
     </SelectedCoffeeContainer>
   )
