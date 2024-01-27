@@ -7,13 +7,34 @@ import {
 } from 'phosphor-react'
 import { ufs } from '../../../../data/uf'
 import { IconTextCheckout } from '../iconTextCheckout'
-import { CheckoutBackground, FormContainer } from './styles'
+import {
+  CheckoutBackground,
+  Container,
+  FormContainer,
+  PaymentContainerForm,
+} from './styles'
 import { useTheme } from 'styled-components'
 import { PaymentOptions } from '../payment'
-import { PaymentContainer } from '../payment/styles'
-import { TitleText } from '../../../../components/typography'
+import { RegularText, TitleText } from '../../../../components/typography'
 import { useFormContext } from 'react-hook-form'
 import { InputForm } from '../inputForm'
+
+export const paymentMethods = {
+  credit: {
+    label: 'cartão de crédito',
+    icon: <CreditCard size={16} />,
+  },
+
+  debit: {
+    label: 'cartão de débito',
+    icon: <Bank size={16} />,
+  },
+
+  money: {
+    label: 'dinheiro',
+    icon: <Money size={16} />,
+  },
+}
 
 interface ErrorsType {
   errors: {
@@ -28,9 +49,10 @@ export function FormCheckout() {
   const { register, formState } = useFormContext()
 
   const { errors } = formState as unknown as ErrorsType
+  const paymentErros = errors?.paymentMethod?.message as unknown as string
 
   return (
-    <div>
+    <Container>
       <TitleText size="xs" color="subtitle">
         Complete seu pedido
       </TitleText>
@@ -101,22 +123,22 @@ export function FormCheckout() {
           title="Pagamento"
           text="O pagamento é feito na entrega. Escolha a forma que deseja pagar"
         />
-
-        <PaymentContainer>
-          <PaymentOptions
-            icon={<CreditCard size={16} color={colors['brand-purple']} />}
-            text="Cartão de crédito"
-          />
-          <PaymentOptions
-            icon={<Bank size={16} color={colors['brand-purple']} />}
-            text="Cartão de Débito"
-          />
-          <PaymentOptions
-            icon={<Money size={16} color={colors['brand-purple']} />}
-            text="Dinheiro"
-          />
-        </PaymentContainer>
+        <PaymentContainerForm>
+          <div>
+            {Object.entries(paymentMethods).map(([key, { label, icon }]) => (
+              <PaymentOptions
+                key={label}
+                id={key}
+                icon={icon}
+                label={label}
+                value={key}
+                {...register('paymentMethod')}
+              />
+            ))}
+          </div>
+          {paymentErros && <RegularText>{paymentErros}</RegularText>}
+        </PaymentContainerForm>
       </CheckoutBackground>
-    </div>
+    </Container>
   )
 }

@@ -42,6 +42,7 @@ export const InputFormContainer = styled.div<InputFormContainerProps>`
 export const InputStyled = styled.input`
   flex: 1;
   height: 100%;
+  width: 100%;
   background: none;
   border: none;
   color: ${({ theme }) => theme.colors['base-text']};

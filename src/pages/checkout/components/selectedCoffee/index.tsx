@@ -54,16 +54,15 @@ export function SelectedCoffee() {
               </RegularText>
               <div>
                 <InputQuantity
-                  onDecrease={
-                    coffee.quantity === 1
-                      ? () => deleteCartItem(coffee.id)
-                      : () => changeQuantity(coffee.id, 'decrease')
-                  }
+                  onDecrease={() => changeQuantity(coffee.id, 'decrease')}
                   onIncrease={() => changeQuantity(coffee.id, 'increase')}
                   quantity={coffee.quantity}
                   size="small"
                 />
-                <RemoveButton onClick={() => deleteCartItem(coffee.id)}>
+                <RemoveButton
+                  type="button"
+                  onClick={() => deleteCartItem(coffee.id)}
+                >
                   <Trash size={16} color={colors['brand-purple']} />
                   <p>remover</p>
                 </RemoveButton>

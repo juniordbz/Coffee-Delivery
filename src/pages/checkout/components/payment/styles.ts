@@ -1,18 +1,26 @@
-import styled from 'styled-components'
-import { breakpoints } from '../../../../breakpoints/breakepoints'
+import styled, { css } from 'styled-components'
 
 export const PaymentContainer = styled.div`
-  display: flex;
-  align-items: space-between;
-  gap: 0.75rem;
+  padding-right: 0.75rem;
 
-  @media ${breakpoints.md} {
-    flex-wrap: wrap;
-    justify-content: center;
+  input {
+    visibility: hidden;
+    appearance: none;
+  }
+
+  input:checked + label div {
+    ${({ theme }) => css`
+      background: ${theme.colors['brand-purple-light']};
+      border-color: ${theme.colors['brand-purple']};
+
+      &:hover {
+        background: ${theme.colors['brand-purple-light']};
+      }
+    `}
   }
 `
 
-export const PaymentCard = styled.button`
+export const PaymentCard = styled.div`
   display: flex;
   align-items: center;
   height: 3rem;
@@ -25,12 +33,4 @@ export const PaymentCard = styled.button`
   gap: 0.75rem;
   font-size: ${({ theme }) => theme.textSizes['components-button-s']};
   padding-left: 1rem;
-
-  &:hover {
-    background: ${({ theme }) => theme.colors['base-hover']};
-  }
-
-  &:focus {
-    border-color: 1px solid ${({ theme }) => theme.colors['brand-purple']};
-  }
 `

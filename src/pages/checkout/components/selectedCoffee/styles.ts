@@ -4,8 +4,14 @@ import { ButtonHTMLAttributes } from 'react'
 
 export const SelectedCoffeeContainer = styled.div`
   display: flex;
+  flex: 1;
   flex-direction: column;
   gap: 1rem;
+
+  @media ${breakpoints.lg} {
+    flex: none;
+    gap: 2rem;
+  }
 `
 
 export const SelectedCoffeeCard = styled.div`
@@ -19,15 +25,11 @@ export const SelectedCoffeeCard = styled.div`
   background: ${({ theme }) => theme.colors['base-card']};
   border-radius: 0 32px 0 32px;
   padding: 2.5rem;
-
-  > NavLink {
-    width: 100%;
-  }
 `
 export const SelectedCoffeeCart = styled.div`
   display: flex;
   justify-content: center;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
 
   > img {
     width: 4rem;
@@ -89,7 +91,7 @@ export const RemoveButton = styled.button`
   padding: 0.4rem 0.56rem;
   line-height: 1;
   font-size: ${({ theme }) => theme.textSizes['text-regular-s']};
-  @media ${breakpoints.xs} {
+  @media ${breakpoints.md} {
     > p {
       display: none;
     }

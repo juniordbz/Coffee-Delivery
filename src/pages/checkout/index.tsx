@@ -4,6 +4,13 @@ import * as zod from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm, FormProvider } from 'react-hook-form'
 import { FormCheckout } from './components/form'
+import { useNavigate } from 'react-router-dom'
+
+enum PaymentMethods {
+  credit = 'credit',
+  debit = 'debit',
+  money = 'money',
+}
 
 const confirmOrderFormValidationShema = zod.object({
   cep: zod.string().min(1, 'informe o cep'),
@@ -13,6 +20,11 @@ const confirmOrderFormValidationShema = zod.object({
   cidade: zod.string().min(1, 'informe a cidade'),
   uf: zod.string().min(2, 'informe o estado'),
   complemento: zod.string(),
+  paymentMethod: zod.nativeEnum(PaymentMethods, {
+    errorMap: () => {
+      return { message: 'Informe o método de pagamento' }
+    },
+  }),
 })
 
 export type OrderData = zod.infer<typeof confirmOrderFormValidationShema>
@@ -28,6 +40,7 @@ export function CheckoutPage() {
 
   function handleConfirmOrder(data: ConfirmOrderFormData) {
     console.log(data)
+    console.log('deubom')
   }
   return (
     <FormProvider {...confirmOrderForm}>

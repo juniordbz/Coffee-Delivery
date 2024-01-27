@@ -14,18 +14,21 @@ export function InputQuantity({
   onIncrease,
   onDecrease,
   quantity,
-  onValue,
 }: InputProps) {
   return (
     <InputContainer>
       <ChangeNumber size={size}>
-        <button disabled={onValue} onClick={() => onDecrease()}>
+        <button
+          type="button"
+          disabled={quantity <= 1}
+          onClick={() => onDecrease()}
+        >
           <Minus />
         </button>
 
         <input type="number" readOnly value={quantity} />
 
-        <button onClick={() => onIncrease()}>
+        <button type="button" onClick={() => onIncrease()}>
           <Plus />
         </button>
       </ChangeNumber>

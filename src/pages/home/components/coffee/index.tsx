@@ -69,13 +69,6 @@ export function CoffeeHome() {
     setCoffeesList(newCoffees)
   }
 
-  const disabledQuantity = (quantity: number): boolean => {
-    if (quantity <= 1) {
-      return true
-    } else {
-      return false
-    }
-  }
   return (
     <div className="container">
       <Titte color={'subtitle'} size={'l'}>
@@ -114,7 +107,6 @@ export function CoffeeHome() {
                   onIncrease={() => addQuantity(coffee.id)}
                   onDecrease={() => decreaseQuantity(coffee.id)}
                   quantity={coffee.quantity}
-                  onValue={disabledQuantity(coffee.quantity)}
                 />
                 <ShopCart onClick={() => handleAdd(coffee)}>
                   <ShoppingCart weight="fill" size={20} />

@@ -1,5 +1,15 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import { breakpoints } from '../../../../breakpoints/breakepoints'
+
+export const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+  @media ${breakpoints.lg} {
+    gap: 2rem;
+  }
+`
 
 export const CheckoutBackground = styled.div`
   width: 100%;
@@ -54,5 +64,25 @@ export const FormContainer = styled.div`
       'complemento complemento'
       'bairro bairro'
       'cidade uf';
+  }
+`
+
+export const PaymentContainerForm = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+  div {
+    display: flex;
+    align-items: center;
+  }
+
+  p {
+    color: ${({ theme }) => theme.colors['base-error']};
+    text-align: center;
+  }
+  @media ${breakpoints.md} {
+    flex-wrap: wrap;
+    justify-content: center;
   }
 `
