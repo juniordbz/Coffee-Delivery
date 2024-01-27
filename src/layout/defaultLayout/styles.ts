@@ -8,9 +8,9 @@ export const LayoutContainer = styled.div`
     margin-left: auto;
     margin-right: auto;
 
-    @media ${breakpoints.lg}, ${breakpoints.md} {
-      padding-left: 2rem;
-      padding-right: 2rem;
+    @media ${breakpoints.lg} {
+      padding-left: 1rem;
+      padding-right: 1rem;
     }
   }
 `

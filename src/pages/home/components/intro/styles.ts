@@ -11,10 +11,17 @@ export const IntroContainer = styled.section`
   display: flex;
   align-items: center;
   justify-content: center;
-  @media ${breakpoints.md} {
+
+  @media ${breakpoints.lg} {
     flex-wrap: wrap;
     background-image: none;
     height: auto;
+
+    & section {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
   }
 `
 export const IntroContent = styled.div`

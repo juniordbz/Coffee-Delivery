@@ -11,6 +11,8 @@ export const SelectedCoffeeContainer = styled.div`
   @media ${breakpoints.lg} {
     flex: none;
     gap: 2rem;
+    width: 100%;
+    max-width: 448px;
   }
 `
 
@@ -25,6 +27,10 @@ export const SelectedCoffeeCard = styled.div`
   background: ${({ theme }) => theme.colors['base-card']};
   border-radius: 0 32px 0 32px;
   padding: 2.5rem;
+
+  @media ${breakpoints.md} {
+    padding: 2rem 1rem;
+  }
 `
 export const SelectedCoffeeCart = styled.div`
   display: flex;
