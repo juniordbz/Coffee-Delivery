@@ -33,4 +33,8 @@ export const PaymentCard = styled.div`
   gap: 0.75rem;
   font-size: ${({ theme }) => theme.textSizes['components-button-s']};
   padding-left: 1rem;
+
+  div {
+    color: ${({ theme }) => theme.colors['brand-purple']};
+  }
 `
