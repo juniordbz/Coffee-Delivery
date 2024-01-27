@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components'
+import styled from 'styled-components'
 import { breakpoints } from '../../../../breakpoints/breakepoints'
 
 export const Container = styled.div`
@@ -8,6 +8,7 @@ export const Container = styled.div`
 
   @media ${breakpoints.lg} {
     gap: 2rem;
+    width: 100%;
   }
 `
 
@@ -75,14 +76,15 @@ export const PaymentContainerForm = styled.div`
   div {
     display: flex;
     align-items: center;
+
+    @media ${breakpoints.md} {
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
   }
 
   p {
     color: ${({ theme }) => theme.colors['base-error']};
     text-align: center;
-  }
-  @media ${breakpoints.md} {
-    flex-wrap: wrap;
-    justify-content: center;
   }
 `

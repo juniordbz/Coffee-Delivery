@@ -4,9 +4,31 @@ import { RegularText, TitleText } from '../../components/typography'
 import { DeliveryDetails, SucessContainer } from './styles'
 import { useTheme } from 'styled-components'
 import IllustrationCoffeeSuccess from '../../assets/IllustrationCoffeeSuccess.svg'
+import { useLocation, useNavigate } from 'react-router-dom'
+import { OrderData } from '../checkout'
+import { paymentMethods } from '../checkout/components/form'
+import { useEffect } from 'react'
+
+interface LocationType {
+  state: OrderData
+}
 
 export function SucessPage() {
   const { colors } = useTheme()
+
+  const { state } = useLocation() as unknown as LocationType
+
+  const navigate = useNavigate()
+
+  useEffect(() => {
+    if (!state) {
+      navigate('/')
+    }
+  }, [])
+
+  if (!state) {
+    return <></>
+  }
 
   return (
     <SucessContainer className="container">
@@ -23,8 +45,11 @@ export function SucessPage() {
             icon={<MapPin size={16} weight={'fill'} />}
             text={
               <RegularText>
-                Entrega em <strong>Rua João Daniel Martinelli, 102</strong>{' '}
-                Farrapos - Porto Alegre, RS
+                Entrega em{' '}
+                <strong>
+                  {state.rua}, {state.numero}
+                </strong>{' '}
+                {state.bairro} - {state.cidade}, {state.uf}
               </RegularText>
             }
             iconBg={colors['brand-purple']}
@@ -44,7 +69,7 @@ export function SucessPage() {
             text={
               <RegularText>
                 Pagamento na entrega <br />
-                <strong>Cartão de Crédito</strong>
+                <strong>{paymentMethods[state.paymentMethod].label}</strong>
               </RegularText>
             }
             iconBg={colors['brand-yellow-dark']}
