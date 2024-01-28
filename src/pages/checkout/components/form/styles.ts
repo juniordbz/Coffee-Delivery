@@ -21,6 +21,10 @@ export const CheckoutBackground = styled.div`
   gap: 2rem;
   padding: 2.5rem;
   background: ${({ theme }) => theme.colors['base-card']};
+
+  @media ${breakpoints.md} {
+    padding: 2rem 1rem;
+  }
 `
 
 export const FormContainer = styled.div`
@@ -69,17 +73,15 @@ export const FormContainer = styled.div`
 `
 
 export const PaymentContainerForm = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-
-  div {
+  & > div {
     display: flex;
     align-items: center;
+    margin-bottom: 1rem;
 
     @media ${breakpoints.md} {
       flex-wrap: wrap;
       gap: 0.75rem;
+      justify-content: center;
     }
   }
 

@@ -1,5 +1,4 @@
 import { createGlobalStyle } from 'styled-components'
-import { breakpoints } from '../breakpoints/breakepoints'
 
 export const GlobalStyles = createGlobalStyle`
   *{
