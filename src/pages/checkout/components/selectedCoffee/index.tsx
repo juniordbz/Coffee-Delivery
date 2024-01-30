@@ -19,8 +19,13 @@ import { useEffect } from 'react'
 const DELIVERY_PRICE = 3.5
 
 export function SelectedCoffee() {
-  const { cartItems, changeQuantity, deleteCartItem, cartItemsTotal } =
-    UseCart()
+  const {
+    cartItems,
+    changeQuantity,
+    deleteCartItem,
+    cartItemsTotal,
+    cartQuantityTotal,
+  } = UseCart()
   const { colors } = useTheme()
 
   const cartTotal = DELIVERY_PRICE + cartItemsTotal
@@ -88,7 +93,7 @@ export function SelectedCoffee() {
           </div>
         </TotalValue>
 
-        <ConfirmOrder disabled={cartQuantity <= 0} type="submit">
+        <ConfirmOrder disabled={cartQuantityTotal <= 0} type="submit">
           confirmar pedido
         </ConfirmOrder>
       </SelectedCoffeeCard>
