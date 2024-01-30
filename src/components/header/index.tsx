@@ -5,7 +5,7 @@ import { NavLink } from 'react-router-dom'
 import { UseCart } from '../../hooks/useCart'
 
 export function Header() {
-  const { cartQuantity } = UseCart()
+  const { cartQuantityTotal } = UseCart()
 
   return (
     <HeaderContainer>
@@ -21,8 +21,8 @@ export function Header() {
             <p>Itaquaquecetuba, SP</p>
           </HeaderButton>
           <NavLink to="/checkout">
-            <HeaderButton disabled={cartQuantity < 1} variant={'yellow'}>
-              {cartQuantity >= 1 && <span>{cartQuantity}</span>}
+            <HeaderButton disabled={cartQuantityTotal < 1} variant={'yellow'}>
+              {cartQuantityTotal >= 1 && <span>{cartQuantityTotal}</span>}
               <ShoppingCart size={22} weight="fill" />
             </HeaderButton>
           </NavLink>

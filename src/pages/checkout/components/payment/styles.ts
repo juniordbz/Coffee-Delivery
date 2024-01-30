@@ -37,4 +37,6 @@ export const PaymentCard = styled.div`
   div {
     color: ${({ theme }) => theme.colors['brand-purple']};
   }
+
+  user-select: none;
 `

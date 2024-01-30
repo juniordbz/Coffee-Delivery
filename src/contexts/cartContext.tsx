@@ -13,7 +13,7 @@ interface CartContextType {
     coffeeId: number,
     operationType: 'increase' | 'decrease',
   ) => void
-  cartQuantity: number
+  cartQuantityTotal: number
   cartItemsTotal: number
   clearCartItems: () => void
 }
@@ -39,7 +39,9 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
     return total + cartItem.price * cartItem.quantity
   }, 0)
 
-  const cartQuantity = cartItems.length
+  const cartQuantityTotal = cartItems.reduce((total, cartItem) => {
+    return total + cartItem.quantity
+  }, 0)
 
   function addCoffeeToCart(coffee: CartItem) {
     const coffeIndex = cartItems.findIndex(
@@ -97,7 +99,7 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
         addCoffeeToCart,
         changeQuantity,
         deleteCartItem,
-        cartQuantity,
+        cartQuantityTotal,
         cartItemsTotal,
         clearCartItems,
       }}

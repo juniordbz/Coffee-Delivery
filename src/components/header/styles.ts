@@ -43,7 +43,7 @@ export const HeaderButton = styled.button<PropsButton>`
   font-size: ${({ theme }) => theme.textSizes['text-regular-s']};
   cursor: inherit;
 
-  @media ${breakpoints.sm}, ${breakpoints.xs} {
+  @media ${breakpoints.sm} {
     p {
       display: none;
     }
