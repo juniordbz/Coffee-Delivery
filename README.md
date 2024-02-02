@@ -1,30 +1,25 @@
-# React + TypeScript + Vite
+# Coffee Delivery em React com Styled Components
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+O projeto é uma plataforma de entrega de café desenvolvida utilizando React e Styled Components para proporcionar uma experiência completa de compra de café online, desde a navegação pelos produtos até o pagamento e entrega. Cada etapa foi cuidadosamente projetada para oferecer uma jornada simplificada e agradável aos usuários.
 
-Currently, two official plugins are available:
+## Principais Características
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Navegação Intuitiva:** A aplicação apresenta uma interface intuitiva que permite aos usuários explorar facilmente os diferentes tipos de café disponíveis.
+- **Seleção Personalizada:** Oferece aos clientes a capacidade de personalizar sua escolha de café.
+- **Carrinho de Compras Interativo:** Um carrinho dinâmico exibe os itens selecionados, permitindo aos usuários adicionar, remover ou ajustar as quantidades de produtos antes da finalização da compra.
+- **Forma de Pagamento Segura:** É possível selecionar opções variadas, como cartão de crédito, débito ou dinheiro.
+- **Estilização com Styled Components:** A estilização é realizada de maneira elegante e eficiente com Styled Components, permitindo uma estética coesa e flexível em toda a aplicação.
 
-## Expanding the ESLint configuration
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Tecnologias Utilizadas
 
-- Configure the top-level `parserOptions` property like this:
+- React
+- Styled Components
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+## Como Executar o Projeto
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+1. Clone o repositório.
+2. Instale as dependências utilizando o gerenciador de pacotes de sua escolha.
+3. Execute o projeto localmente.
+
+Este projeto visa proporcionar uma experiência de compra de café online completa, combinando a praticidade do comércio eletrônico com a estética visualmente atrativa proporcionada pelo React e Styled Components. A aplicação busca tornar a experiência de compra de café mais conveniente e prazerosa para os entusiastas dessa bebida única.
